@@ -15,6 +15,12 @@ class Developer extends Model
         return $developers;
     }
 
+    public function listOneDeveloper(int $id)
+    {
+        $developer = Developer::find($id);
+        return $developer;
+    }
+
     public function storeDeveloper(array $request)
     {
         $developer = Developer::create($request);

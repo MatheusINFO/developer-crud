@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Developer;
 use Exception;
 use Illuminate\Http\Request;
+use Ramsey\Uuid\Type\Integer;
 
 class DeveloperController extends Controller
 {
@@ -18,7 +19,15 @@ class DeveloperController extends Controller
         try {
             return response()->json($this->developer->listAllDevelopers(), 200);
         } catch (\Throwable $th) {
-            return response()->json(["message" => "Erro ao listar desenvolvedores"], 400);
+            return response()->json(["message" => "Erro ao listar desenvolvedores"], 404);
+        }
+    }
+
+    public function show(int $id){
+        try {
+            return response()->json($this->developer->listOneDeveloper($id), 200);
+        } catch (\Throwable $th) {
+            return response()->json(["message" => "Erro ao listar desenvolvedor"], 404);
         }
     }
 
