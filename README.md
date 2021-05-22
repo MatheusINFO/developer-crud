@@ -13,12 +13,12 @@ Api created only as a case study of Laravel, here we can create developers, udpa
 
 ## Routes create
 
-GET /api/developers
-GET /api/developers? (/developers?nome=Matheus&idade=20...)
-GET /api/developers/{id}
-POST /api/developers
-PUT /api/developers/{id}
-DELETE /api/developers/{id}
+GET /api/developers  <br>
+GET /api/developers? (/developers?nome=Matheus&idade=20...)  <br>
+GET /api/developers/{id}  <br>
+POST /api/developers  <br>
+PUT /api/developers/{id}  <br>
+DELETE /api/developers/{id}  <br>
 
 ## How run the api
 
