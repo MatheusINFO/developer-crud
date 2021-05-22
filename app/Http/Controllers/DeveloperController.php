@@ -46,6 +46,21 @@ class DeveloperController extends Controller
         }
     }
 
+    public function update(Request $request, int $id){
+        try {
+            $request->validate([
+                'nome' => ['bail', 'max:25'],
+                'sexo',
+                'idade',
+                'hobby' => ['max:250'],
+                'datanascimento'
+            ]);
+            return response()->json($this->developer->updateDeveloper($request->toArray(), $id), 200);
+        } catch (\Throwable $th) {
+            return response()->json(["message" => "Erro ao atualizar desenvolvedor"], 400);
+        }
+    }
+
     public function destroy(int $id){
         try {
             $this->developer->deleteDeveloper($id);
