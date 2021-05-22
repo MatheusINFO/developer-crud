@@ -7,6 +7,29 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
+## About api
+
+Api created only as a case study of Laravel, here we can create developers, udpate, delete, listAll, listOne and list with queryParams. I use mysql in Db and Nginx to build my app.
+
+## Routes create
+
+GET /api/developers
+GET /api/developers? (/developers?nome=Matheus&idade=20...)
+GET /api/developers/{id}
+POST /api/developers
+PUT /api/developers/{id}
+DELETE /api/developers/{id}
+
+## How run the api
+
+I run this project with Laradock follow this steps:
+
+git clone https://github.com/laradock/laradock.git
+docker-compose up -d nginx mysql phpmyadmin
+docker-compose exec --user=laradock workspace bash
+create your database on phpMyAdmin and config the .env file
+php artisan migrate
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
