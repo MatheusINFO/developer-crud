@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Developer;
-use Exception;
 use Illuminate\Http\Request;
-use Ramsey\Uuid\Type\Integer;
 
 class DeveloperController extends Controller
 {
@@ -15,9 +13,27 @@ class DeveloperController extends Controller
         $this->developer = $developer;
     }
 
-    public function index(){
+    public function index(Request $request){
         try {
-            return response()->json($this->developer->listAllDevelopers(), 200);
+            $filters = ['nome', 'idade', 'sexo', 'hobby', 'datanascimento'];
+            $query = [
+                "nome" => "%",
+                "idade" => "%",
+                "sexo" => "%",
+                "hobby" => "%",
+                "datanascimento" => "%"
+            ];
+            $hasQuery = false;
+            foreach($filters as $filter){
+                if($request->query($filter)){
+                    $query[$filter] = $request->query($filter);
+                    $hasQuery = true;
+                }
+            }
+            if(!$hasQuery){
+                return response()->json($this->developer->listAllDevelopers([]), 200);
+            }
+            return response()->json($this->developer->listAllDevelopers($query), 200);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Erro ao listar desenvolvedores"], 404);
         }

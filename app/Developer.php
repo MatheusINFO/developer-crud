@@ -9,9 +9,18 @@ class Developer extends Model
     protected $table = 'developers';
     protected $fillable = ['nome', 'sexo', 'idade', 'hobby', 'datanascimento'];
 
-    public function listAllDevelopers()
+    public function listAllDevelopers(array $query)
     {
-        $developers = Developer::all();
+        if($query){
+            $developers = Developer::where('nome', 'LIKE', $query['nome'])
+                            ->where('idade', 'LIKE', $query['idade'] )
+                            ->where('sexo', 'LIKE', $query['sexo'] )
+                            ->where('hobby', 'LIKE', $query['hobby'] )
+                            ->where('datanascimento', 'LIKE', $query['datanascimento'] )
+                            ->paginate(5);
+        }else{
+            $developers = Developer::all();
+        }
         return $developers;
     }
 
