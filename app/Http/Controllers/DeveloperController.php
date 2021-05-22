@@ -14,6 +14,14 @@ class DeveloperController extends Controller
         $this->developer = $developer;
     }
 
+    public function index(){
+        try {
+            return response()->json($this->developer->listAllDevelopers(), 200);
+        } catch (\Throwable $th) {
+            return response()->json(["message" => "Erro ao listar desenvolvedores"], 400);
+        }
+    }
+
     public function store(Request $request){
         try {
             $request->validate([
@@ -24,7 +32,7 @@ class DeveloperController extends Controller
                 'datanascimento' => ['required']
             ]);
             return response()->json($this->developer->storeDeveloper($request->toArray()), 201);
-        } catch (Exception $e) {
+        } catch (\Throwable $th) {
             return response()->json(["message" => "Erro ao criar um novo desenvolvedor"], 400);
         }
     }
