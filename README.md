@@ -22,13 +22,13 @@ DELETE /api/developers/{id}  <br>
 
 ## How run the api
 
-I run this project with Laradock follow this steps:
+I run this project with Laradock follow this steps:  <br>
 
-git clone https://github.com/laradock/laradock.git
-docker-compose up -d nginx mysql phpmyadmin
-docker-compose exec --user=laradock workspace bash
-create your database on phpMyAdmin and config the .env file
-php artisan migrate
+git clone https://github.com/laradock/laradock.git  <br>
+docker-compose up -d nginx mysql phpmyadmin  <br>
+docker-compose exec --user=laradock workspace bash   <br>
+create your database on phpMyAdmin and config the .env file  <br>
+php artisan migrate  <br>
 
 ## About Laravel
 
