@@ -45,4 +45,13 @@ class DeveloperController extends Controller
             return response()->json(["message" => "Erro ao criar um novo desenvolvedor"], 400);
         }
     }
+
+    public function destroy(int $id){
+        try {
+            $this->developer->deleteDeveloper($id);
+            return response()->json('', 204);
+        } catch (\Throwable $th) {
+            return response()->json(["message" => "Erro ao listar desenvolvedor"], 404);
+        }
+    }
 }

@@ -26,4 +26,10 @@ class Developer extends Model
         $developer = Developer::create($request);
         return $developer;
     }
+
+    public function deleteDeveloper(int $id)
+    {
+        $developer = Developer::destroy($id);
+        return $developer;
+    }
 }
